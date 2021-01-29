@@ -7,7 +7,7 @@ import style from "./List.module.css";
 function List() {
   return (
     <div className={style.list}>
-      <div class="card-header">
+      <div className="card-header">
         <span>
           LIST
           <FontAwesomeIcon icon={faEllipsisH} className={style.more} />

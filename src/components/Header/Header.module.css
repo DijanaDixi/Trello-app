@@ -1,0 +1,65 @@
+.nav {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.colorIcon {
+    color: white;
+    margin-top: 10px;
+}
+
+.home,
+.boards,
+.search,
+.plus,
+.bell,
+.infoCircle,
+.userCircle {
+    display: inline-block;
+    color: #fff;
+    background: hsla(0, 0%, 100%, .15);
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin-left: 5px;
+    text-align: center;
+    border-radius: 3px;
+
+}
+
+.home:hover,
+.boards:hover,
+.search:hover,
+.plus:hover,
+.infoCircle:hover,
+.userCircle:hover,
+.bell:hover {
+    color: #fff;
+    background: hsla(0, 0%, 100%, .24);
+}
+
+.boards {
+    width: 150px;
+    height: 40px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+
+.search {
+    width: 300px;
+}
+
+.logo {
+    display: block;
+    width: 60%;
+    opacity: 0.7;
+}
+
+.logo:hover {
+    opacity: 1;
+
+}
