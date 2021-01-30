@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Colors from "./Colors/Colors";
 import colors from "../../utilis/colors";
 import getImages from "../../utilis/imageApi"
-// import images from "../../utilis/images";
 import style from "./SideDrawer.module.css";
 import Images from "./Images/Images";
 
@@ -12,17 +11,17 @@ const SideDrawer = ({ setSideDrawer, showSideDrawer,setBackgroundImage }) => {
   const [color, setColor] = useState(false);
   // Image
   const [displayImage, setDisplayImage] = useState(false);
-
   const[images,setImages]=useState([])
-
 
   const getListOfImages=async ()=>{
     const listImages=await getImages();
     setImages(listImages)
   }
+  
   useEffect(()=>{
   getListOfImages()
   },[])
+
   return (
     <>
       <div

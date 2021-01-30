@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import TopBar from "../TopBar/TopBar";
 import SideDrawer from "../SideDrawer/SideDrawer";
 import List from "../List/List";
+import ReusableInputContainer from "../ReusableInputContainer/ReusableInputContainer"
 import style from "./Board.module.css";
 
 function Board() {
@@ -34,8 +35,8 @@ function Board() {
         />
       </div>
       <div className={style.containerBoard}>
-     
         <List/>
+        <ReusableInputContainer/>
         </div>
         <div><p style={{fontSize:"50px", color:"green"}}>{}</p></div>
     </div>
