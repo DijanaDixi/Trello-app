@@ -1,47 +1,27 @@
-import React, { useState } from "react";
-import Header from "../Header/Header";
-import TopBar from "../TopBar/TopBar";
-import SideDrawer from "../SideDrawer/SideDrawer";
+import React from "react";
+import PropTypes from "prop-types";
+import ReusableInputComponent from "../ReusableInputContainer/ReusableInputContainer";
 import List from "../List/List";
-import ReusableInputContainer from "../ReusableInputContainer/ReusableInputContainer"
 import style from "./Board.module.css";
 
-function Board() {
-  // Side Drawer
-  const [showSideDrawer, setSideDrawer] = useState(false);
-  const [backgroundImage, setBackgroundImage] = useState("red");
+function Board({ lists, cards, addList }) {
+  
+  const listData = lists.map((list) => {
+    return <List list={list} key={list.id} cards={cards} />;
+  });
 
   return (
     <>
-      <div
-        className={`container-fluid ${style.bkg}`}
-        style={{
-          background: `url(${backgroundImage}`,
-          backgroundRepeat:"no-repeat",
-          backgroundSize: "cover",
-          display:"inline-block",
-          backgroundColor: backgroundImage,
-          backgroundsize:"contain"
-        }}
-      >
-       
-        <div className={style.bar}>
-        <Header />
-        <TopBar setSideDrawer={setSideDrawer} showSideDrawer={showSideDrawer} />
-        <SideDrawer
-          setSideDrawer={setSideDrawer}
-          showSideDrawer={showSideDrawer}
-          setBackgroundImage={setBackgroundImage}
-        />
-      </div>
       <div className={style.containerBoard}>
-        <List/>
-        <ReusableInputContainer/>
-        </div>
-        <div><p style={{fontSize:"50px", color:"green"}}>{}</p></div>
-    </div>
+        {listData}
+        <ReusableInputComponent type="list" addList={addList} />
+      </div>
     </>
   );
 }
-
+Board.propTypes = {
+  lists: PropTypes.array,
+  cards: PropTypes.array,
+  addList: PropTypes.func,
+};
 export default Board;

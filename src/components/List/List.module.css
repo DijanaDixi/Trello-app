@@ -1,13 +1,35 @@
-.list{
+.list {
     background-color: #ebecf0;
-    max-width: 350px;
+    min-width: 320px;
     border-radius: 5px;
     margin-right: 10px;
     margin-left: 0;
-    min-height: 200px;  
     margin-bottom: 15px;
-    min-height: 150px;
+    height: auto;
+    cursor: pointer;
+    overflow-y: auto;
+    overflow-x: auto;
 }
-.more{
+
+.more {
     float: right;
+    line-height: 16;
 }
+.inputTitle:focus{
+outline: none;
+border:2px solid #ebecf0;
+
+}
+
+textarea{
+    box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
+}
+textarea:focus{
+    outline: none;
+    border: none;
+    border: 0 none #FFF;
+    overflow: hidden;
+    outline:none;
+}
+
+

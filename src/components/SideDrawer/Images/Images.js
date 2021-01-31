@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from "react";
+import PropTypes from "prop-types";
 import Fade from "react-bootstrap/Fade";
 import style from "../SideDrawer.module.css";
 
@@ -17,7 +17,7 @@ function Images({images,displayImage,setBackgroundImage}){
                   backgroundRepeat: "no-repeat",
                   backgroundSize:"cover"
                 }}
-                onClick={()=>setBackgroundImage(image.full)}
+                onClick={()=>setBackgroundImage({img: image.full, color: ''})}
               ></div>
             );
           })}
@@ -25,5 +25,9 @@ function Images({images,displayImage,setBackgroundImage}){
       </Fade>
     )
 }
-
+Images.propTypes = {
+ images: PropTypes.array,
+ displayImage:PropTypes.bool,
+ setBackgroundImage:PropTypes.func
+};
 export default Images;

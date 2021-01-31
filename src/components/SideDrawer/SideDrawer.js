@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import Colors from "./Colors/Colors";
 import colors from "../../utilis/colors";
-import getImages from "../../utilis/imageApi"
+import getImages from "../../utilis/imageApi";
 import style from "./SideDrawer.module.css";
 import Images from "./Images/Images";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-// eslint-disable-next-line react/prop-types
-const SideDrawer = ({ setSideDrawer, showSideDrawer,setBackgroundImage }) => {
-  // Colors
+const SideDrawer = ({ setSideDrawer, showSideDrawer, setBackgroundImage }) => {
   const [color, setColor] = useState(false);
-  // Image
-  const [displayImage, setDisplayImage] = useState(false);
-  const[images,setImages]=useState([])
 
-  const getListOfImages=async ()=>{
-    const listImages=await getImages();
-    setImages(listImages)
-  }
-  
-  useEffect(()=>{
-  getListOfImages()
-  },[])
+  const [displayImage, setDisplayImage] = useState(false);
+  const [images, setImages] = useState([]);
+
+  const getListOfImages = async () => {
+    const listImages = await getImages();
+    setImages(listImages);
+  };
+
+  useEffect(() => {
+    getListOfImages();
+  }, []);
 
   return (
     <>
@@ -31,14 +32,14 @@ const SideDrawer = ({ setSideDrawer, showSideDrawer,setBackgroundImage }) => {
             : `${style.sideDrawer} ${style.close}`
         }
       >
-         <div className={style.topSideDrawer}>
-          <span onClick={() => setSideDrawer(false)}>X</span>
-          <span><a href="#3">Change Background</a>
-           </span>
-          
-         </div>
-         <hr/>
-       
+        <div className={style.topSideDrawer}>
+          <span onClick={() => setSideDrawer(false)}>
+            <FontAwesomeIcon icon={faTimes} color="#3d5d73" cursor="pointer" />
+          </span>
+          <span className={style.title}>Change Background</span>
+        </div>
+        <hr />
+
         <div className={style.menu}>
           <div
             onClick={() => {
@@ -52,7 +53,7 @@ const SideDrawer = ({ setSideDrawer, showSideDrawer,setBackgroundImage }) => {
               backgroundRepeat: "no-repeat",
             }}
           ></div>
-         
+
           <div
             className={style.box}
             onClick={() => {
@@ -65,18 +66,29 @@ const SideDrawer = ({ setSideDrawer, showSideDrawer,setBackgroundImage }) => {
               backgroundRepeat: "no-repeat",
             }}
           ></div>
-          
         </div>
-        <hr/>
+        <hr />
 
         {displayImage ? (
-          <Images images={images} displayImage={displayImage} setBackgroundImage={setBackgroundImage}/>
+          <Images
+            images={images}
+            displayImage={displayImage}
+            setBackgroundImage={setBackgroundImage}
+          />
         ) : (
-          <Colors colors={colors} color={color} setBackgroundImage={setBackgroundImage}/>
+          <Colors
+            colors={colors}
+            color={color}
+            setBackgroundImage={setBackgroundImage}
+          />
         )}
       </div>
     </>
   );
 };
-
+SideDrawer.propTypes = {
+  setBackgroundImage: PropTypes.func,
+  showSideDrawer: PropTypes.bool,
+  setSideDrawer: PropTypes.func,
+};
 export default SideDrawer;
