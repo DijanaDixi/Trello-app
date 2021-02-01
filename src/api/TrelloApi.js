@@ -42,7 +42,7 @@ class TrelloApi {
       }
     ).then((res) => res.json());
   }
-  static updateCards(cardContent, cardId) {
+  static updateCards(cardId, cardContent) {
     return fetch(
       `https://api.trello.com/1/cards/${cardId}?key=${apiKey}&token=${apiToken}&name=${cardContent}`,
       {

@@ -31,5 +31,8 @@ textarea:focus{
     overflow: hidden;
     outline:none;
 }
+.listTitle{
+     border-bottom: none!important;
+}
 
 

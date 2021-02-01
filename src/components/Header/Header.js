@@ -15,13 +15,12 @@ import style from "./Header.module.css";
 import useOutsideClick from "../useOutsideClick/useOutsideClick";
 import ModalAddNewBoard from "./Modal/ModalAddNewBoard";
 
-
 function Header({ boards, addBoard }) {
   const [showDropdown, setDropdown] = useState(false);
   const [openAddModal, setAddModal] = useState(false);
   const [newBoard, setNewBoard] = useState("");
 
-  // click hook
+  // click cutom hook
   const refDropdown = useRef();
   useOutsideClick(refDropdown, () => {
     setDropdown(false);
@@ -36,9 +35,8 @@ function Header({ boards, addBoard }) {
     setNewBoard(e.target.value);
   };
   const handlerAddNewBoard = () => {
-      addBoard(newBoard);
-      setAddModal(false);
-  
+    addBoard(newBoard);
+    setAddModal(false);
   };
   return (
     <>
@@ -136,6 +134,6 @@ function Header({ boards, addBoard }) {
 }
 Header.propTypes = {
   boards: PropTypes.array,
-  addBoard:PropTypes.func,
+  addBoard: PropTypes.func,
 };
 export default Header;

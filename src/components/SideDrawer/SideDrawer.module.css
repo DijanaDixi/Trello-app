@@ -4,12 +4,15 @@
   max-width: 70%;
   right: 0;
   top: 60px;
-  height: 100%;
+
   z-index: 200;
   background-color: white;
   padding: 32px 16px;
   box-sizing: border-box;
   transition: transform 0.3s ease-out;
+  overflow-x: auto;
+  height: 100vh;
+  height: calc(100vh - 50px);
 }
 
 .open {

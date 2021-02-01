@@ -8,7 +8,6 @@ import style from "./List.module.css";
 import storeApi from "../../utilis/storeApi";
 
 function List({ list, cards }) {
-
   const title = list.name;
   const listId = list.id;
 
@@ -31,17 +30,22 @@ function List({ list, cards }) {
   return (
     <div className={style.list}>
       <div
-        className={"card-header "+ style.listTitle}
+        className={"card-header " + style.listTitle}
         onClick={() => setOpen(true)}
         onBlur={() => handleOnBlur()}
       >
         {open ? (
           <span>
-            <input type="text" value={listName} onChange={getName} className={style.inputTitle}/>
+            <input
+              type="text"
+              value={listName}
+              onChange={getName}
+              className={style.inputTitle}
+            />
             <FontAwesomeIcon icon={faEllipsisH} className={style.more} />
           </span>
         ) : (
-          <span >
+          <span>
             {listName}
             <FontAwesomeIcon icon={faEllipsisH} className={style.more} />
           </span>
@@ -58,7 +62,7 @@ function List({ list, cards }) {
 }
 
 List.propTypes = {
- list: PropTypes.object,
- cards:PropTypes.array
+  list: PropTypes.object,
+  cards: PropTypes.array,
 };
 export default List;

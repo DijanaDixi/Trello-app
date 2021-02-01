@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Modal } from "react-bootstrap";
 import style from "./ModalCard.module.css";
 
-function ModalCard({ handleClose, show, cardContent, getName, position }) {
+function ModalCard({ handleClose, show, position, card, handleCloseModal }) {
+  const [cardContent, setCardContent] = useState(card.name);
+  const getName = (e) => {
+    setCardContent(e.target.value);
+  };
   const customStyle = {
     content: {
       left: `${position.left}px`,
-      top:`${position.top}px`,
+      top: `${position.top}px`,
     },
   };
   return (
@@ -15,17 +19,17 @@ function ModalCard({ handleClose, show, cardContent, getName, position }) {
       <Modal
         animation={false}
         show={show}
-        onHide={handleClose}
+        onHide={handleCloseModal}
         size="sm"
         contentClassName={style.modal}
         style={customStyle.content}
       >
-        <div >
+        <div>
           <form>
             <div className="form-group">
-              <label >
+              <label>
                 <textarea
-                  className={'form-control '+ style.textarea}
+                  className={"form-control " + style.textarea}
                   type="text"
                   value={cardContent}
                   onChange={getName}
@@ -36,7 +40,7 @@ function ModalCard({ handleClose, show, cardContent, getName, position }) {
             <button
               type="button"
               className="btn btn-success"
-              onClick={handleClose}
+              onClick={() => handleClose(card.id, cardContent)}
             >
               Save
             </button>
@@ -52,5 +56,7 @@ ModalCard.propTypes = {
   cardContent: PropTypes.string,
   getName: PropTypes.func,
   position: PropTypes.object,
+  card: PropTypes.object,
+  handleCloseModal: PropTypes.func,
 };
 export default ModalCard;

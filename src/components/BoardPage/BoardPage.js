@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Board from "../Board/Board";
@@ -7,7 +8,7 @@ import TrelloApi from "../../api/TrelloApi";
 function BoardPage() {
   const [lists, setLists] = useState([]);
   const [cards, setCards] = useState([]);
-
+  const[comment,setComment]=useState([])
   // board id
   let { id } = useParams();
 
@@ -43,14 +44,25 @@ function BoardPage() {
     });
   };
 
-  const updateCards = (cardContent, cardId) => {
-    TrelloApi.updateCards(cardContent, cardId).then(() => {
+  const updateCards = (cardId,cardContent) => {
+    TrelloApi.updateCards(cardId,cardContent).then(() => {
       fetchCards();
     });
   };
   const deleteCard = (cardId) => {
     TrelloApi.deleteCard(cardId).then(() => {
       fetchCards();
+    });
+  };
+  const addComment = (cardId,text) => {
+    console.log(cardId,text)
+    TrelloApi.addComment(cardId,text).then(() => {
+    });
+    getComment()
+  };
+  const getComment = (cardId) => {
+    TrelloApi.getComment(cardId).then((data) => {
+      console.log(data)
     });
   };
 
@@ -64,6 +76,8 @@ function BoardPage() {
         updateListName,
         updateCards,
         deleteCard,
+        addComment,
+        getComment
       }}
     >
       <Board lists={lists} cards={cards} />

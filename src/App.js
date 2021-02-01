@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState} from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import BoardPage from "./components/BoardPage/BoardPage";
 import Header from "./components/Header/Header";
@@ -31,7 +30,7 @@ function App() {
   };
 
   const addBoard = (name) => {
-    TrelloApi.addBoard(name).then((data) => {
+    TrelloApi.addBoard(name).then(() => {
       fetchBoards();
     });
   };

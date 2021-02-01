@@ -17,7 +17,7 @@ function TopBar({ setSideDrawer, showSideDrawer, boards }) {
   const [boardName, setBoardName] = useState("");
 
   let location = useLocation();
-  
+
   useEffect(() => {
     const board = boards.find((el) => {
       const id = location.pathname.replace("/board/", "");

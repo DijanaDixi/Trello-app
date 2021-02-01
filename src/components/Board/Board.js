@@ -5,8 +5,13 @@ import List from "../List/List";
 import style from "./Board.module.css";
 
 function Board({ lists, cards, addList }) {
-  
-  const listData = lists.map((list) => {
+  //  reverse lists
+  var newLists = [];
+  for (var i = lists.length - 1; i >= 0; i--) {
+    newLists.push(lists[i]);
+  }
+
+  const listData = newLists.map((list) => {
     return <List list={list} key={list.id} cards={cards} />;
   });
 

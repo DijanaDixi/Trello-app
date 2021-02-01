@@ -12,10 +12,10 @@ function ModalAddNewBoard({
 }) {
   return (
     <Modal
+      animation={false}
       show={openAddModal}
       onHide={handleClose}
-      contentClassName={style.modal}
-      size="sm"
+      contentClassName={style.modal}   
     >
       <div>
         <form>

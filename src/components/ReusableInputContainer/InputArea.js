@@ -17,7 +17,7 @@ function InputArea({ open, setOpen, type, listId }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (type === "card") {
+    if (type === "card" && value.length > 0) {
       addCards(value, listId);
       getValue("");
       setOpen(false);
@@ -26,6 +26,7 @@ function InputArea({ open, setOpen, type, listId }) {
       getValue("");
       setOpen(false);
     }
+    return false;
   };
 
   return (
