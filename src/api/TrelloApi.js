@@ -66,6 +66,50 @@ class TrelloApi {
       }
     ).then((res) => res.json());
   }
+  static addComment(cardId,text) {
+    return fetch( 
+  `https://api.trello.com/1/cards/${cardId}/actions/comments?key=${apiKey}&token=${apiToken}&text=${text}`,
+      {
+        method: "post",
+      }
+    ).then((res) => res.json());
+  }
+  static getComment(cardId) {
+    return fetch( 
+  `https://api.trello.com/1/cards/${cardId}/actions?key=${apiKey}&token=${apiToken}`,
+      {
+        method: "get",
+      }
+    ).then((res) => res.json());
+  }
+  static deleteComment(cardId,idAction) {
+    return fetch( 
+  `https://api.trello.com/1/cards/${cardId}/actions/${idAction}/comments?key=${apiKey}&token=${apiToken}`,
+      {
+        method: "delete",
+      }
+    ).then((res) => res.json(
+    ));
+  }
+  static updateComment(cardId,idAction,text) {
+    return fetch( 
+  `https://api.trello.com/1/cards/${cardId}/actions/${idAction}/comments?key=${apiKey}&token=${apiToken}&text=${text}`,
+      {
+        method: "put",
+      }
+    ).then((res) => res.json(
+     
+    ));
+  }
+  static archiveList(idList) {
+    return fetch( `https://api.trello.com/1/lists/${idList}/closed?key=${apiKey}&token=${apiToken}&value=true`,
+      {
+        method: "put",
+      }
+    ).then((res) => res.json(
+     console.log(res)
+    ));
+  }
 }
 
 export default TrelloApi;

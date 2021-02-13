@@ -32,7 +32,6 @@
   width: 40px;
   height: 33px;
   line-height: 33px;
-  cursor: pointer;
   margin-left: 5px;
   text-align: center;
   border-radius: 3px;
@@ -59,6 +58,7 @@
   width: 150px;
   margin-top: 0px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .star {
@@ -69,13 +69,7 @@
   width: 200px;
 }
 
-.userFriends {
-  width: 150px;
-}
 
-.invite {
-  width: 100px;
-}
 
 .calendar {
   width: 120px;

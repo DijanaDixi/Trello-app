@@ -1,16 +1,17 @@
+
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import {
   faCalendarAlt,
   faConciergeBell,
-  faUserFriends,
   faEllipsisH,
   faColumns,
 } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./TopBar.module.css";
+
 import { useLocation } from "react-router-dom";
 
 function TopBar({ setSideDrawer, showSideDrawer, boards }) {
@@ -42,11 +43,6 @@ function TopBar({ setSideDrawer, showSideDrawer, boards }) {
           <FontAwesomeIcon icon={faStar} className={style.colorIcon} />
         </span>
         <span className={style.name}>Dijana Djordjevic </span>
-        <span className={style.userFriends}>
-          <FontAwesomeIcon icon={faUserFriends} className={style.colorIcon} />
-          <span className={style.more}></span>Team Visible
-        </span>
-        <span className={style.invite}>Invite</span>
       </div>
       {/* Move icon on rigth onShow SideDrawer */}
       <div className={showSideDrawer ? `${style.moveIcon}` : ""}>

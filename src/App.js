@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import React, { useEffect, useState} from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import BoardPage from "./components/BoardPage/BoardPage";
@@ -8,19 +10,19 @@ import TopBar from "./components/TopBar/TopBar";
 import TrelloApi from "./api/TrelloApi";
 import style from "./App.css";
 
+
 function App() {
   const [showSideDrawer, setSideDrawer] = useState(false);
   const [backgroundImage, setBackgroundImage] = useState({
-    color: "",
+    color:  "#008080",
     img:
-      "https://www.crnagoraturska.com/wp-content/uploads/2017/03/Cappadocia-Wallpapers-HD.jpg",
+      "",
   });
 
+ 
   const [boards, setBoards] = useState([]);
-
   useEffect(() => {
     fetchBoards();
-
   }, []);
 
   const fetchBoards = () => {
@@ -34,6 +36,7 @@ function App() {
       fetchBoards();
     });
   };
+
   return (
     <>
       <BrowserRouter>
@@ -55,6 +58,7 @@ function App() {
               boards={boards}
               setSideDrawer={setSideDrawer}
               showSideDrawer={showSideDrawer}
+             
             />
             <SideDrawer
               setSideDrawer={setSideDrawer}
@@ -64,9 +68,7 @@ function App() {
           </div>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/board/:id">
-              <BoardPage />
-            </Route>
+            <Route exact path="/board/:id" component={BoardPage}/>
           </Switch>
         </div>
       </BrowserRouter>

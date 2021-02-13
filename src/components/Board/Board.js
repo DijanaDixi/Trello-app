@@ -4,21 +4,16 @@ import ReusableInputComponent from "../ReusableInputContainer/ReusableInputConta
 import List from "../List/List";
 import style from "./Board.module.css";
 
-function Board({ lists, cards, addList }) {
-  //  reverse lists
-  var newLists = [];
-  for (var i = lists.length - 1; i >= 0; i--) {
-    newLists.push(lists[i]);
-  }
 
-  const listData = newLists.map((list) => {
-    return <List list={list} key={list.id} cards={cards} />;
+function Board({ lists,addList,cards }) {
+  const listData = lists.map((list) => {
+    return <List list={list} key={list.id} cards={cards}/>;
   });
 
   return (
     <>
       <div className={style.containerBoard}>
-        {listData}
+          {listData}
         <ReusableInputComponent type="list" addList={addList} />
       </div>
     </>

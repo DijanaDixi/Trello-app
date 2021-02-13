@@ -13,7 +13,8 @@
 
 .more {
     float: right;
-    line-height: 16;
+    line-height: 30;
+    height: 30px;
 }
 .inputTitle:focus{
 outline: none;

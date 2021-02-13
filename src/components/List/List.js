@@ -1,20 +1,24 @@
+/* eslint-disable no-undef */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-key */
+/* eslint-disable no-unused-vars */
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Card from "../Card/Card";
 import ReusableInputComponent from "../ReusableInputContainer/ReusableInputContainer";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import style from "./List.module.css";
 import storeApi from "../../utilis/storeApi";
+import Popover from "react-bootstrap/Popover";
 
-function List({ list, cards }) {
+function List({ list,cards }) {
   const title = list.name;
   const listId = list.id;
-
   const [listName, setListName] = useState(title);
   const [open, setOpen] = useState(false);
-
-  const { updateListName } = useContext(storeApi);
+  const { updateListName,archiveList} = useContext(storeApi);
 
   const getName = (e) => {
     setListName(e.target.value);
@@ -27,13 +31,17 @@ function List({ list, cards }) {
 
   const filterCards = cards.filter((card) => card.idList == listId);
 
+  const popover = (
+    <Popover>
+      <Popover.Title as="h5">List Actions</Popover.Title>
+      <Popover.Content>
+        <strong onClick={(e)=>{e.preventDefault(),archiveList(listId)}} style={{cursor:"pointer"}}>Archive List</strong>
+      </Popover.Content>
+    </Popover>
+  );
   return (
-    <div className={style.list}>
-      <div
-        className={"card-header " + style.listTitle}
-        onClick={() => setOpen(true)}
-        onBlur={() => handleOnBlur()}
-      >
+    <div className={style.list} onBlur={() => handleOnBlur()}>
+      <div className={"card-header " + style.listTitle}>
         {open ? (
           <span>
             <input
@@ -42,14 +50,14 @@ function List({ list, cards }) {
               onChange={getName}
               className={style.inputTitle}
             />
-            <FontAwesomeIcon icon={faEllipsisH} className={style.more} />
           </span>
         ) : (
-          <span>
-            {listName}
-            <FontAwesomeIcon icon={faEllipsisH} className={style.more} />
-          </span>
+          <span onClick={() => setOpen(true)}>{listName}</span>
         )}
+
+        <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+          <FontAwesomeIcon icon={faEllipsisH} className={style.more} />
+        </OverlayTrigger>
       </div>
       {filterCards
         ? filterCards.map((card) => {

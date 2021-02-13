@@ -4,7 +4,6 @@ import { Link, NavLink } from "react-router-dom";
 import {
   faHome,
   faColumns,
-  faSearch,
   faPlus,
   faBell,
   faInfoCircle,
@@ -81,12 +80,6 @@ function Header({ boards, addBoard }) {
                   </div>
                 ) : null}
               </div>
-
-              <span
-                className={style.search + " d-flex justify-content-end pr-3"}
-              >
-                <FontAwesomeIcon icon={faSearch} className={style.colorIcon} />{" "}
-              </span>
             </div>
           </div>
 

@@ -33,7 +33,7 @@ function InputArea({ open, setOpen, type, listId }) {
     <>
       {open ? (
         <div className={style.card}>
-          <form onSubmit={handleSubmit} className="p-2">
+          <form onSubmit={handleSubmit} className="pl-2 pr-2">
             <div className="form-group w-100 align-self-center">
               <textarea
                 className="form-control w-100"

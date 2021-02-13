@@ -8,14 +8,14 @@ import TrelloApi from "../../api/TrelloApi";
 function BoardPage() {
   const [lists, setLists] = useState([]);
   const [cards, setCards] = useState([]);
-  const[comment,setComment]=useState([])
+  const[comments,setComments]=useState([])
+
   // board id
   let { id } = useParams();
-
   useEffect(() => {
     fetchLists();
     fetchCards();
-  }, [id]);
+  }, [id,comments]);
 
   const fetchLists = () => {
     TrelloApi.fetchLists(id).then((data) => {
@@ -25,11 +25,13 @@ function BoardPage() {
   const fetchCards = () => {
     TrelloApi.fetchCards(id).then((data) => {
       setCards(data);
+    
     });
   };
 
   const addList = (value) => {
-    TrelloApi.addList(id, value).then(() => fetchLists());
+    TrelloApi.addList(id, value).then(() =>
+     fetchLists());
   };
 
   const addCards = (value, listId) => {
@@ -55,15 +57,31 @@ function BoardPage() {
     });
   };
   const addComment = (cardId,text) => {
-    console.log(cardId,text)
     TrelloApi.addComment(cardId,text).then(() => {
     });
-    getComment()
+    getComment(cardId)
   };
   const getComment = (cardId) => {
     TrelloApi.getComment(cardId).then((data) => {
-      console.log(data)
+    setComments(data)
     });
+  };
+  const deleteComment = (cardId,idAction) => {
+    TrelloApi.deleteComment(cardId,idAction).then(() => {
+     getComment(cardId)
+     fetchCards()
+    });
+  };
+  const updateComment = (cardId,idAction,text) => {
+    TrelloApi.updateComment(cardId,idAction,text).then(() => {
+     getComment(cardId)
+
+    });
+  };
+  const archiveList = (idList) => {
+    TrelloApi.archiveList(idList).then(() => {
+    });
+    fetchLists()
   };
 
   return (
@@ -77,11 +95,16 @@ function BoardPage() {
         updateCards,
         deleteCard,
         addComment,
-        getComment
+        getComment,
+        comments,
+        deleteComment,
+        updateComment,
+        archiveList,
+      
       }}
     >
       <Board lists={lists} cards={cards} />
-    </StoreApi.Provider>
+       </StoreApi.Provider>
   );
 }
 

@@ -6,7 +6,7 @@
 
 .containerBoard {
   display: flex;
-  height: calc(100vh - 116px);
+  height: calc(100vh - 113px);
   align-items: flex-start;
   overflow-x: scroll;
 }
