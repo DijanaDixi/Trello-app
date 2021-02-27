@@ -1,7 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-unused-vars */
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
@@ -24,7 +20,8 @@ function List({ list,cards }) {
     setListName(e.target.value);
   };
 
-  const handleOnBlur = () => {
+  const handleOnBlur = (event) => {
+    event.preventDefault()
     updateListName(listName, listId);
     setOpen(false);
   };
@@ -40,7 +37,7 @@ function List({ list,cards }) {
     </Popover>
   );
   return (
-    <div className={style.list} onBlur={() => handleOnBlur()}>
+    <div className={style.list} onBlur={handleOnBlur}>
       <div className={"card-header " + style.listTitle}>
         {open ? (
           <span>

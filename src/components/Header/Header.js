@@ -5,9 +5,6 @@ import {
   faHome,
   faColumns,
   faPlus,
-  faBell,
-  faInfoCircle,
-  faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./Header.module.css";
@@ -96,21 +93,6 @@ function Header({ boards, addBoard }) {
           <div>
             <span className={style.plus} onClick={showModal}>
               <FontAwesomeIcon icon={faPlus} className={style.colorIcon} />
-            </span>
-            <span className={style.bell}>
-              <FontAwesomeIcon icon={faBell} className={style.colorIcon} />
-            </span>
-            <span className={style.infoCircle}>
-              <FontAwesomeIcon
-                icon={faInfoCircle}
-                className={style.colorIcon}
-              />
-            </span>
-            <span className={style.userCircle}>
-              <FontAwesomeIcon
-                icon={faUserCircle}
-                className={style.colorIcon}
-              />
             </span>
           </div>
         </div>

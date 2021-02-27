@@ -10,7 +10,7 @@ class TrelloApi {
   }
   static fetchLists(boardId) {
     return fetch(
-      `https://api.trello.com/1/boards/${boardId}/lists?key=${apiKey}&token=${apiToken}`
+      `https://api.trello.com/1/boards/${boardId}/lists?key=${apiKey}&token=${apiToken}&filter=open`
     ).then((res) => res.json());
   }
   static fetchCards(boardId) {

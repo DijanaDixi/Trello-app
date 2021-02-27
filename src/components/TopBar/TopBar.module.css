@@ -69,8 +69,6 @@
   width: 200px;
 }
 
-
-
 .calendar {
   width: 120px;
 }
@@ -82,6 +80,7 @@
 .menu {
   width: 150px;
   cursor: pointer;
+  margin-right: 5px;
 }
 
 .more {
@@ -90,6 +89,6 @@
 }
 
 .moveIcon {
-  margin-right: 200px;
+  margin-right: 195px;
   transition: ease-in-out;
 }

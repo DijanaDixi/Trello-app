@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 import React, { useEffect, useState} from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import BoardPage from "./components/BoardPage/BoardPage";
@@ -14,9 +12,10 @@ import style from "./App.css";
 function App() {
   const [showSideDrawer, setSideDrawer] = useState(false);
   const [backgroundImage, setBackgroundImage] = useState({
-    color:  "#008080",
+    color:  "",
     img:
-      "",
+      "https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?crop=entropy&cs=srgb&fm=jpg&ixid=MXwyMDI0MjJ8MHwxfHNlYXJjaHw0fHxMYW5kc2NhcGV8ZW58MHx8fA&ixlib=rb-1.2.1&q=85"
+  
   });
 
  

@@ -1,17 +1,10 @@
-
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import {
-  faCalendarAlt,
-  faConciergeBell,
-  faEllipsisH,
-  faColumns,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEllipsisH, faColumns } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./TopBar.module.css";
-
 import { useLocation } from "react-router-dom";
 
 function TopBar({ setSideDrawer, showSideDrawer, boards }) {
@@ -42,18 +35,10 @@ function TopBar({ setSideDrawer, showSideDrawer, boards }) {
         <span className={style.star}>
           <FontAwesomeIcon icon={faStar} className={style.colorIcon} />
         </span>
-        <span className={style.name}>Dijana Djordjevic </span>
       </div>
       {/* Move icon on rigth onShow SideDrawer */}
       <div className={showSideDrawer ? `${style.moveIcon}` : ""}>
-        <span className={style.calendar}>
-          <FontAwesomeIcon icon={faCalendarAlt} className={style.colorIcon} />
-          <span className={style.more}></span>Calendar
-        </span>
-        <span className={style.butler}>
-          <FontAwesomeIcon icon={faConciergeBell} className={style.colorIcon} />
-          <span className={style.more}></span>Butler
-        </span>
+        <span className={style.name}>Dijana Djordjevic </span>
         {/* change background color */}
         <span className={style.menu} onClick={() => setSideDrawer(true)}>
           <FontAwesomeIcon icon={faEllipsisH} className={style.colorIcon} />
